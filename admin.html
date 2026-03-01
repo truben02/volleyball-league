@@ -18,8 +18,8 @@
     <p id="login-msg" style="color:red;"></p>
   </div>
 
-  <!-- Team Setup Section -->
-  <div id="team-setup">
+  <!-- Team Setup Section (hidden until login) -->
+  <div id="team-setup" style="display:none;">
     <h2>Setup Teams for Week 1</h2>
     <table id="team-table">
       <thead>
@@ -35,6 +35,18 @@
     </table>
     <button id="save-teams-btn">Save Teams</button>
   </div>
+
+  <!-- Controls (hidden until login) -->
+  <div id="controls" style="display:none;">
+    <h2>League Controls</h2>
+    <button id="advance-week-btn">Advance Week</button>
+    <button id="reset-league-btn">Reset League</button>
+  </div>
+
+  <!-- JS -->
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>  </div>
 
   <!-- Controls -->
   <div id="controls">
