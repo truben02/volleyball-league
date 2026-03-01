@@ -32,7 +32,7 @@ document.getElementById('login-btn').addEventListener('click', async () => {
 
 // --- Load Teams from Supabase ---
 async function loadTeams() {
-  const { data, error } = await supabase.from('teams').select('*').order('starting_rank', { ascending: true });
+  const { data, error } = await supabase.from('teams').select('*').order('rank', { ascending: true });
 
   tbody.innerHTML = '';
 
@@ -42,7 +42,7 @@ async function loadTeams() {
   }
 
   // If table is empty, create 24 empty placeholders
-  teamsData = data.length ? data : Array.from({ length: 24 }, () => ({ name: '', pool: 'A', starting_rank: 1 }));
+  teamsData = data.length ? data : Array.from({ length: 24 }, () => ({ name: '', pool: 'A', rank: 1 }));
 
   teamsData.forEach(team => {
     const tr = document.createElement('tr');
@@ -56,7 +56,7 @@ async function loadTeams() {
           <option value="D" ${team.pool === 'D' ? 'selected' : ''}>D</option>
         </select>
       </td>
-      <td><input type="number" min="1" max="6" value="${team.starting_rank}" /></td>
+      <td><input type="number" min="1" max="6" value="${team.rank}" /></td>
     `;
     tbody.appendChild(tr);
   });
@@ -80,7 +80,7 @@ document.getElementById('save-teams-btn').addEventListener('click', async () => 
       alert(`Invalid pool in row ${i + 1}`);
       return;
     }
-    if (isNaN(starting_rank) || starting_rank < 1 || starting_rank > 6) {
+    if (isNaN(rank) || rank < 1 || rank > 6) {
       alert(`Invalid starting rank in row ${i + 1}`);
       return;
     }
@@ -89,7 +89,7 @@ document.getElementById('save-teams-btn').addEventListener('click', async () => 
     const { error } = await supabase.from('teams').upsert({
       name,
       pool,
-      starting_rank
+      rank
     });
     if (error) {
       alert(`Error saving row ${i + 1}: ${error.message}`);
