@@ -1,4 +1,5 @@
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+import { generateWeekMatches } from './scheduler.js';  
 
 // Replace with your Supabase project details
 const SUPABASE_URL = 'https://cunmfxvtixrezjqrbwbd.supabase.co';
