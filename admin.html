@@ -3,14 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Volleyball League Admin</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    table { border-collapse: collapse; width: 100%; margin-bottom: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-    input, select { width: 100%; padding: 4px; }
-    button { padding: 8px 16px; margin: 4px 0; }
-    #team-setup, #controls { display: none; margin-top: 20px; }
-  </style>
+  <link rel="stylesheet" href="./css/admin.css" />
 </head>
 <body>
 
@@ -35,6 +28,25 @@
           <th>Pool (A-D)</th>
           <th>Starting Rank (1-6)</th>
         </tr>
+      </thead>
+      <tbody>
+        <!-- Rows added dynamically by JS -->
+      </tbody>
+    </table>
+    <button id="save-teams-btn">Save Teams</button>
+  </div>
+
+  <!-- Controls -->
+  <div id="controls">
+    <h2>League Controls</h2>
+    <button id="advance-week-btn">Advance Week</button>
+    <button id="reset-league-btn">Reset League</button>
+  </div>
+
+  <!-- JS -->
+  <script type="module" src="./js/admin.js"></script>
+</body>
+</html>        </tr>
       </thead>
       <tbody>
         <!-- Rows added dynamically by JS -->
