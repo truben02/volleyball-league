@@ -100,3 +100,20 @@ document.getElementById('save-teams-btn').addEventListener('click', async () => 
   alert('Teams saved successfully!');
   await loadTeams(); // reload table from Supabase to reflect saved values
 });
+// Check existing session on page load
+window.addEventListener('DOMContentLoaded', async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+
+  if (session) {
+    // Already logged in
+    loginDiv.style.display = 'none';
+    teamSetupDiv.style.display = 'block';
+    controlsDiv.style.display = 'block';
+    await loadTeams();
+  } else {
+    // Not logged in
+    loginDiv.style.display = 'block';
+    teamSetupDiv.style.display = 'none';
+    controlsDiv.style.display = 'none';
+  }
+});
