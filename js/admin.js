@@ -142,6 +142,9 @@ advanceWeekBtn.addEventListener('click', async () => {
   // 7. Advance week
   await supabase.from('league_state').update({ current_week: currentWeek + 1, locked: false }).eq('id', 1);
 
+  // 8. Generate new matches for the next week
+  await generateWeekMatches();
+  
   alert(`Week ${currentWeek} locked. Advanced to Week ${currentWeek + 1}`);
   loadTeams();
 });
